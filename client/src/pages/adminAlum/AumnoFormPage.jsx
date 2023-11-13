@@ -77,8 +77,6 @@ export function AlumnoFormPage() {
           {errors.title && (
             <p className="text-red-500 text-xs italic">Please enter a title.</p>
           )}
-
-
           <Button>Save</Button>
         </form>
       </Card>

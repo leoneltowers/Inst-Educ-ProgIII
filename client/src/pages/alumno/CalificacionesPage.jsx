@@ -16,18 +16,9 @@ function CalificacionesPage() {
     useEffect(() => {
         getCalificaciones();
     }, []);
-
-    // const calificaciones = [
-    //     // Tu arreglo de calificaciones
-    //     // Asegúrate de tener los datos de calificaciones en este formato
-    // ];
-
-
-
     const handlePrint = () => {
         window.print();
     };
-
 
     return (
         <div className="container content-center mx-auto px-20 my-5 ">
@@ -39,9 +30,7 @@ function CalificacionesPage() {
                        <div className='my-5'>
                     <Button onClick={handlePrint} variant="contained">Generar Boletín</Button>
                 </div>
-
             </div>
-
         </div>
     )
 }

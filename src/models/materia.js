@@ -21,10 +21,7 @@ const materiaSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // Hace referencia al modelo de usuario para el profesor
     },
-    // alumnos: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User', // Hace referencia al modelo de usuario para los alumnos
-    // }],
+    // alumnos
 });
 
 export default mongoose.model('Materia', materiaSchema);

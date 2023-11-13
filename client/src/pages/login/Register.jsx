@@ -1,67 +1,28 @@
 import { useEffect } from "react";
-// import { useAuth } from "../../context/authContext";
 import { Link, useNavigate } from 'react-router-dom';//cambie"""
 import { Card, Message, Button, Input, Label, ButtonNext } from "../../components/ui";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "../../schemas/auth";
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from "../../context/authContext";
 
 import "./styles.css";
 
-// import { registerRequest } from '../../api/auth';
-
-
 function Register() {
-
-
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(
-    {
-      // resolver: zodResolver(registerSchema),
-    }
-  );
+  } = useForm();
 
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
-
-  //me redirecciona a una nueva pagina desp de registrarme
-
   const navigate = useNavigate();
-  //aca esta el error parece
   useEffect(() => {
     if (isAuthenticated) navigate("/");
   }, [isAuthenticated]);
 
-
-  // // console.log(user);
-  ///dates users
-
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
-    // console.log(values)
-    // const resp = await registerRequest(values)
-    // console.log(resp)
   });
-
-  // const { signup, errors: registerErrors, isAuthenticated } = useAuth();
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver: zodResolver(registerSchema),
-  // });
-  // const navigate = useNavigate();
-
-  // const onSubmit = async (value) => {
-  //   await signup(value);
-  // };
-
-
 
   return (
     <div class="login">
@@ -75,10 +36,7 @@ function Register() {
               </div>
             ))
           }
-
-
           <div class="w-96 rounded-2xl bg-slate-900">
-
             <form
               onSubmit={onSubmit}
             >
@@ -127,24 +85,17 @@ function Register() {
                   type="rpassword"
                   name="rpassword"
                   placeholder="Confirm"
-                //  {...register("rpassword")}
                 />
 
                 <Label></Label>
                 <ButtonNext>Register</ButtonNext>
-
               </div>
-
             </form>
             <p className="flex gap-x-2 mx-7 justify-between text-white">
               Already have an account? <Link to="/login" className="text-sky-500 ">Login</Link>
             </p><br />
-
           </div>
         </div>
-
-
-
       </div>
     </div>
   );

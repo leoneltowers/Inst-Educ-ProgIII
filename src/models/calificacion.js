@@ -12,8 +12,6 @@ const calificacionSchema = new mongoose.Schema({
     },
 
     nota: Number,
-
-    // fechaExamen: Date,
 });
 
 export default mongoose.model('calificacion', calificacionSchema);
