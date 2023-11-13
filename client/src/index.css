@@ -1,0 +1,82 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; 
+
+
+/* 
+
+fuente Montserrat desde Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+/*fuente Lora desde Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+
+/*fuente Noto desde Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700&display=swap");
+
+:root {
+  /* Colores principales */
+  --color-negro: #000;
+  --color-rojo: #ff0000; /* Rojo vivo */
+  --color-rojo-oscuro-hover: #c30000;
+  --color-blanco: #fff;
+  --color-gris: #555; /* Gris ligeramente más oscuro */
+  --color-gris-opacity: #55555570;
+  --color-gris-oscuro: #3b3b3b;
+  --color-verde: #00c853;
+  --color-verde-oscuro-hover: #007a3d;
+  --color-naranja: #ffa600e3;
+  --color-azul-oscuro: #000080; /* Azul oscuro */
+
+  --background-primary: #02050a;
+  --background-primary-opacity: #02050a81;
+
+  /* Colores de categorías */
+  --color-accion: #ff5733; /* Naranja brillante */
+  --color-drama: #ff00ff; /* Amarillo anaranjado */
+  --color-horror: #800080; /* Púrpura intenso */
+  --color-comedia: #00bfff; /* Azul cielo */
+
+  /* Colores de botones */
+  --color-boton: #e74c3c;
+  --color-boton-secundario: var(--color-blanco);
+
+  --navbar-inicio: rgba(0, 0, 0, 0.5);
+
+  --font-banner-title: "Noto Sans JP", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto", sans-serif;
+}
+
+/* Fuente para el cuerpo del texto y descripciones de películas */
+body {
+  font-family: "Lora", serif;
+}
+
+/* Fuente para títulos y encabezados destacados */
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Fuente para botones y texto destacado */
+.button,
+.highlighted-text {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  padding: 0 5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
