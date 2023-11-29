@@ -16,14 +16,17 @@ function Register() {
 
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) navigate("/");
+  // }, [isAuthenticated]);
+
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
+    
   });
 
+ 
   return (
     <div class="login">
       <div class="login_logo"></div>
@@ -36,7 +39,10 @@ function Register() {
               </div>
             ))
           }
+
+
           <div class="w-96 rounded-2xl bg-slate-900">
+
             <form
               onSubmit={onSubmit}
             >
@@ -85,17 +91,25 @@ function Register() {
                   type="rpassword"
                   name="rpassword"
                   placeholder="Confirm"
+                //  {...register("rpassword")}
                 />
 
                 <Label></Label>
+                <Link to="/login">
                 <ButtonNext>Register</ButtonNext>
+                </Link>
               </div>
+
             </form>
             <p className="flex gap-x-2 mx-7 justify-between text-white">
               Already have an account? <Link to="/login" className="text-sky-500 ">Login</Link>
             </p><br />
+
           </div>
         </div>
+
+
+
       </div>
     </div>
   );

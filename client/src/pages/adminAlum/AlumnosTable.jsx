@@ -29,8 +29,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
- const CalificacionesTable = ({ calificaciones }) => {
-
+ const AlumnosTable = ({ alumnos}) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -43,12 +42,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {calificaciones.map((calificacion) => (
-            <StyledTableRow key={calificacion._id}>
+          {alumnos.map((alumnos) => (
+            <StyledTableRow key={alumnos._id}>
               <StyledTableCell component="th" scope="row">
-                {calificacion.materia.nombre}
+                {}
               </StyledTableCell>
-              <StyledTableCell align="right">{calificacion.nota}</StyledTableCell>
+              <StyledTableCell align="right">{alumnos.nombre}</StyledTableCell>
               <StyledTableCell align="right">{"Sin observaciones"}</StyledTableCell>
            
             </StyledTableRow>
@@ -59,5 +58,5 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     
   );
 
-};
-export default CalificacionesTable
+}
+export default AlumnosTable

@@ -4,26 +4,31 @@ const cursoSchema = new mongoose.Schema({
 
     nombre: {
         type: String,
-        trim: true,
-        unique: true,
+        // trim: true,
+        // unique: true,
     },
 
-    comision: {
+    comisión: {
         type: String,
-        requiered: true,
-        trim: true,
-        unique: true,
+        // requiered: true,
+        // trim: true,
+        // unique: true,
     },
     año: {
         type: String,
     },
-    materias: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Materia', // Hace referencia al modelo de usuario para el profesor
-    }],
 
-    alumnos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] //tipo usurio alumno
 
+    materias: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Materia", 
+        },],
+
+    alumnos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], 
+
+    profesor:
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
-export default mongoose.model('Curso', cursoSchema);
+export default mongoose.model("Curso", cursoSchema);

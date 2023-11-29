@@ -2,12 +2,23 @@ import User from "../models/user.model.js";
 import Materia from "../models/materia.js";
 import Curso from "../models/curso.js";
 import Calificacion from "../models/calificacion.js";
+import { populate } from "dotenv";
+import calificacion from "../models/calificacion.js";
 
 //Alumnos
 export const getAlumnos = async (req, res) => {
   try {
     const alumnos = await User.find({ roles: "653b073550a96710dbbee046" });
     res.json(alumnos);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+export const getProfesores = async (req, res) => {
+  try {
+    const profesores = await User.find({ roles: "653b073550a96710dbbee045" });
+    res.json(profesores);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -27,7 +38,7 @@ export const deleteAlumno = async (req, res) => {
 
 export const updateAlumno = async (req, res) => {
   try {
-    const { firstName,lastName, phone } = req.body;
+    const { firstName, lastName, phone } = req.body;
     const alumnoUpdated = await User.findOneAndUpdate(
       { _id: req.params.id },
       { firstName, lastName, phone },
@@ -52,7 +63,7 @@ export const getAlumno = async (req, res) => {
 //Asociar alumno a un curso
 export const addUserCursos = async (req, res) => {
   try {
-    const curso = await  Curso.findById(req.params.id);
+    const curso = await Curso.findById(req.params.id);
     const user = await User.findById(req.user.id);
     if (!curso || !user) {
       return res.status(404).json({ message: 'Curso o usuario no encontrado' });
@@ -68,7 +79,7 @@ export const addUserCursos = async (req, res) => {
 //Cursos
 export const getCursos = async (req, res) => {
   try {
-    const cursos = await  Curso.find({});
+    const cursos = await Curso.find({}).populate("materias").populate("alumnos");
     // Curso.find({ user: req.user.id }).populate("user");
     res.json(cursos);
   } catch (error) {
@@ -78,12 +89,12 @@ export const getCursos = async (req, res) => {
 
 export const createCurso = async (req, res) => {
   try {
-    const { nombre, comision, año, materias } = req.body;
+    const { nombre, comisión, año } = req.body;
     const newCurso = new Curso({
       nombre,
-      comision,
+      comisión,
       año,
-      materias,
+
     });
     await newCurso.save();
     res.json(newCurso);
@@ -120,7 +131,7 @@ export const updateCurso = async (req, res) => {
 
 export const getCurso = async (req, res) => {
   try {
-    const curso = await Curso.findById(req.params.id);
+    const curso = await Curso.findById(req.params.id).populate("materias").populate("alumnos");
     if (!curso) return res.status(404).json({ message: "Course not found" });
     return res.json(curso);
   } catch (error) {
@@ -131,7 +142,7 @@ export const getCurso = async (req, res) => {
 //Materia
 export const createMateria = async (req, res) => {
   try {
-    const { nombre, horario,profesor } = req.body;
+    const { nombre, horario, profesor } = req.body;
     const newMateria = new Materia({
       nombre,
       horario,
@@ -145,21 +156,40 @@ export const createMateria = async (req, res) => {
 };
 
 //Calificaciones
+// export const getCalificaciones = async (req, res) => {
+//   try {
+//     const calificaciones = await Calificacion.find({alumno: req.user.id}).populate('materia');
+//     res.json(calificaciones);
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
+
 export const getCalificaciones = async (req, res) => {
   try {
-    const calificaciones = await Calificacion.find({alumno: req.user.id}).populate('materia')
-    res.json(calificaciones);
+    if (req.user.roles) {
+      if (req.user.roles[0].name === 'profesor') {
+        const calificaciones = await Calificacion.find({ profesor: req.user.id }).populate('materia').populate('alumno');
+        return res.json(calificaciones);
+      } else if (req.user.roles[0].name === 'alumno') {
+        const calificaciones = await Calificacion.find({ alumno: req.user.id }).populate('materia');
+        return res.json(calificaciones);
+      }
+    }
+    return res.status(403).json({ message: 'Acceso no autorizado' });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
+
 
 export const createCalif = async (req, res) => {
   try {
     const { alumno, materia, nota } = req.body;
     const newCalificacion = new Calificacion({
       alumno,
-      materia, 
+      materia,
       nota,
     });
     await newCalificacion.save();
@@ -170,3 +200,26 @@ export const createCalif = async (req, res) => {
 };
 
 
+export const updateCalificacion = async (req, res) => {
+  try {
+    const { nota } = req.body;
+    const calificacionUpdated = await Calificacion.findOneAndUpdate(
+      { _id: req.params.id },
+      { nota },
+      { new: true }
+    );
+    return res.json(calificacionUpdated);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getCalificacion = async (req, res) => {
+  try {
+    const calificacion = await Calificacion.findById(req.params.id).populate('alumno');
+    if (!calificacion) return res.status(404).json({ message: "Calificacion not found" });
+    return res.json(calificacion);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

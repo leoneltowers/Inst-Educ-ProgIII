@@ -16,7 +16,7 @@ import "./modal.css";
 
 
 
-import { useAlumnos } from "../../context/alumContext"
+import { useAdmin } from "../../context/adminContext"
 
 
 
@@ -67,7 +67,7 @@ const style = {
 
 export function TableAlumnos() {
 
-  const { alumnos, getAlumnos } = useAlumnos();
+  const { alumnos, getAlumnos } = useAdmin();
 
 
 

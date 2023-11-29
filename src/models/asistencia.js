@@ -10,8 +10,6 @@ const asistSchema = new mongoose.Schema({
         trim: true,
     }
 
-
-
 });
 
 export default mongoose.model('Asistencia', asistSchema)

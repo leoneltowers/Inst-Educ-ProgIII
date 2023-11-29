@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { useAlumnos } from "../../context/alumContext"
+import { useAdmin } from "../../context/adminContext"
 import { AlumnoCard } from "../../components/cursos/AlumnoCard";
 import { Button, ButtonLink, Card } from "../../components/ui";
 import "./styles.css";
 
 export function AlumnoPage() {
-  const { alumnos, getAlumnos } = useAlumnos();
+  const { alumnos, getAlumnos } = useAdmin();
 
   useEffect(() => {
     getAlumnos();
@@ -16,7 +16,7 @@ export function AlumnoPage() {
       <div className="container mx-auto px-20 my-5 ">
 
         <div className="my-4">
-        <ButtonLink to={`/alumnos`}>AGREGAR ALUMNO</ButtonLink>
+        <ButtonLink to={`/add-alumno`}>AGREGAR ALUMNO</ButtonLink>
         </div>      
         <div className="grid grid-cols-3 gap-4">
           {

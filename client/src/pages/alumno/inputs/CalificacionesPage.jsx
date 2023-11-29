@@ -2,20 +2,21 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import CalificacionesTable from './CalificacionesTable';
-import { useAlumnos } from "../../context/alumContext"
+import { useAdmin } from "../../../context/adminContext"
 // import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../../context/authContext";
 
 function CalificacionesPage() {
 
-    const { calificaciones, getCalificaciones } = useAlumnos();
+    const { calificaciones, getCalificaciones } = useAdmin();
     const { user } = useAuth();
 
     useEffect(() => {
         getCalificaciones();
     }, []);
+    
     const handlePrint = () => {
         window.print();
     };

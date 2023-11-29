@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Card, Input, Label } from "../../components/ui";
-import { useAlumnos } from "../../context/alumContext";
+import { useAdmin } from "../../context/adminContext";
 import { useForm } from "react-hook-form";
 
 export function AlumnoFormPage() {
 
-  const { getAlumno, updateAlumno }= useAlumnos();
+  const { getAlumno, updateAlumno }= useAdmin();
   const navigate = useNavigate();
   const params = useParams();
   const {
@@ -21,6 +21,7 @@ export function AlumnoFormPage() {
       if (params.id) {
         updateAlumno(params.id, data);
       } else {
+        createAlumno(data);
       }
       navigate("/alumnos");
     } catch (error) {
@@ -31,7 +32,7 @@ export function AlumnoFormPage() {
   useEffect(() => {
     const loadAlumno = async () => {
       if (params.id) {
-        const alumno = await getCurso(params.id);
+        const alumno = await getAlumno(params.id);
         setValue("firstName", alumno.firstName);
         setValue("lastName", alumno.lastName);
         setValue("phone",alumno.phone);

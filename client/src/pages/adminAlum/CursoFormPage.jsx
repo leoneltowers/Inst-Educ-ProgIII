@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Card, Input, Label } from "../../components/ui";
-import { useAlumnos } from "../../context/alumContext";
+import { useAdmin } from "../../context/adminContext";
 import { useForm } from "react-hook-form";
 
 export function CursoFormPage() {
 
-  const { createCurso, getCurso, updateCurso }= useAlumnos();
+  const { createCurso, getCurso, updateCurso }= useAdmin();
   const navigate = useNavigate();
   const params = useParams();
+  
   const {
     register,
     setValue,
@@ -36,8 +37,8 @@ export function CursoFormPage() {
       if (params.id) {
         const curso = await getCurso(params.id);
         setValue("nombre", curso.nombre);
-        setValue("comision", curso.comision);
-        setValue("año",curso.comision);
+        setValue("comisión", curso.comisión);
+        setValue("año",curso.año);
         
       }
     };
@@ -62,9 +63,9 @@ export function CursoFormPage() {
 
           <Input
             type="text"
-            name="comision"
+            name="comisión"
             placeholder="Comision"
-            {...register("comision")}
+            {...register("comisión")}
             autoFocus
           />
           {errors.title && (

@@ -10,25 +10,27 @@ import {
   deleteCursoRequest,
   getAlumnoRequest,
   updateAlumnoRequest,
-  deleteAlumnoRequest
+  deleteAlumnoRequest,
+  getCalificacionRequest,
+  updateCalificacionRequest,
+  getProfesoresRequest
 
 } from "../api/alum";
 
-const AlumContext = createContext();
+const AdminContext = createContext();
 
-export const useAlumnos = () => {
-  const context = useContext(AlumContext);
+export const useAdmin = () => {
+  const context = useContext(AdminContext);
   if (!context) throw new Error("useTasks must be used within a TaskProvider");
   return context;
 };
 
-export function AlumProvider({ children }) {//que hace esto??
+export function AdminProvider({ children }) {
+  const [profesores, setProfesores] = useState([]);
   const [alumnos, setAlumnos] = useState([]);
   const [cursos, setCursos] = useState([]);
   const [calificaciones, setCalificaciones] = useState([]);
-
-  
-
+  const [cursosAlum, setCursosAlum] = useState([]);
 
   const addUser = async (id) => {
     try {
@@ -37,17 +39,37 @@ export function AlumProvider({ children }) {//que hace esto??
       console.error(error);
     }
   };
-
+  //CALIFICACIONES
   const getCalificaciones = async () => {
     const res = await getCalificacionesRequest();
     setCalificaciones(res.data);
     console.log(res.data);
   };
 
-  //CRUD CURSOS
+
+  const getCalificacion = async (id) => {
+    try {
+      const res = await getCalificacionRequest(id);
+      console.log(res.data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateCalificacion = async (id, calificacion) => {
+    try {
+      await updateCalificacionRequest(id, calificacion);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //CURSOS
 
   const getCursos = async () => {
     const res = await getCursosRequest();
+    console.log(res.data);
     setCursos(res.data);
   };
 
@@ -60,15 +82,29 @@ export function AlumProvider({ children }) {//que hace esto??
     }
   };
 
-
   const getCurso = async (id) => {
     try {
       const res = await getCursoRequest(id);
+
+      setCursosAlum(res.data);
+      console.log("javii", res);
       return res.data;
+
     } catch (error) {
       console.error(error);
     }
   };
+
+  // const getCursoAlum = async (id) => {
+  //   try {
+  //   //   const res = await getCursoAlumRequest(id);
+  //   //    setCursosAlum(res.data); 
+  //   //  console.log("javii", res);
+  //   //  return res.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const updateCurso = async (id, curso) => {
     try {
@@ -120,29 +156,39 @@ export function AlumProvider({ children }) {//que hace esto??
     }
   };
 
+  //profesores
+  const getProfesores = async () => {
+    const res = await getProfesoresRequest();
+    setProfesores(res.data);
+  };
 
   return (
-    <AlumContext.Provider
+    <AdminContext.Provider
       value={{
         alumnos,
+        profesores,
         getAlumnos,
         addUser,
         calificaciones,
         getCalificaciones,
+        getCalificacion,
+        getProfesores,
+        updateCalificacion,
         cursos,
-
+        cursosAlum,
         getCursos,
         createCurso,
         getCurso,
+        // getCursoAlum,
+        
         updateCurso,
         deleteCurso,
         getAlumno,
         updateAlumno,
         deleteAlumno,
-      
       }}
     >
       {children}
-    </AlumContext.Provider>
+    </AdminContext.Provider>
   );
 }

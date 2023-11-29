@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
-    
+
     email: {
         type: String,
         requiered: true,
@@ -14,12 +14,12 @@ const userSchema = new mongoose.Schema({
     },
 
     roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role",
-      },],
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Role",
+        },],
     firstName: { type: String, required: true, trim: true },
-    lastName: { type: String, required: true,  trim: true },
+    lastName: { type: String, required: true, trim: true },
     phone: { type: String, trim: true },
     bornDate: { type: Date },
     isActive: { type: Boolean, default: true },

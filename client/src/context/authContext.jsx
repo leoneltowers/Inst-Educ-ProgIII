@@ -7,25 +7,19 @@ const AuthContext = createContext();
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within a AuthProvider");
-  }
+  // if (!context) {
+  //   throw new Error("useAuth must be used within a AuthProvider");
+  // }
   return context;
 
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);//aca guarda el usuario para usarlo
-  // const [isProf, setProf] = useState(null);///no guarda jaja
-  // const [isAlum, setAlum] = useState(null);
-
-
-
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // clear errors after 5 seconds
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -42,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       if (res.status === 200) {
         console.log(res.data);
         setUser(res.data);
-        setIsAuthenticated(true);//si pongo en false se rompe
+        setIsAuthenticated(true);
       }
     } catch (error) {
       console.log(error.response.data);
@@ -53,24 +47,15 @@ export const AuthProvider = ({ children }) => {
   const signin = async (user) => {
     try {
       const res = await loginRequest(user);
-      console.log(res)
+      console.log(res.data)
       setUser(res.data);
-
-      // setProf(res.data.roles.includes('653b073550a96710dbbee045'))
-      
-      // const roles = () => ({
-      //   isProfesor: user.roles.includes('653b073550a96710dbbee045'),
-      //   isAlumno: user.roles.includes('653b073550a96710dbbee046')
-      // });
-
-
-      setIsAuthenticated(true);//autenticado para el header
+      setIsAuthenticated(true);
     } catch (error) {
       console.log(error);
       setErrors(error.response.data.message);
     }
   };
-  //video 3.57 min
+  
   const logout = () => {
     Cookies.remove("token");
     setUser(null);
@@ -78,11 +63,6 @@ export const AuthProvider = ({ children }) => {
   };
 
 
-  
-
-
-
-  //
   useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
@@ -109,13 +89,10 @@ export const AuthProvider = ({ children }) => {
 
 
 
-
   return (
     <AuthContext.Provider
       value={{
         user,
-        // isAlum,
-        // isProf,
         signup,
         signin,
         logout,

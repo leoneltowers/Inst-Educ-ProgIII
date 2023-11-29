@@ -1,5 +1,4 @@
-// import { useEffect } from "react";
-// import { useAuth } from "../../context/authContext";
+
 import { Link, useNavigate } from "react-router-dom";
 import { Card, Message, ButtonNext, Input, Label } from "../../components/ui";
 import { useForm } from "react-hook-form";
@@ -7,6 +6,7 @@ import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 
 import "./styles.css";
+import Header from "../../components/header/Header";
 
 function Login() {
   const {
@@ -25,16 +25,16 @@ function Login() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (isAuthenticated) {
-      if (user && user.roles[0].name === 'admin') {
-        navigate('/docente'); // Redirige a la página de docente
-      } else if (user && user.roles[0].name === 'alumno') {
-        navigate('/alumno'); // Redirige a la página de alumno
-      }
-    }
+    isAuthenticated && user && navigate(
+      user.roles[0].name === 'admin' ? '/admin-home' :
+      user.roles[0].name === 'profesor' ? '/profesor-home' :
+      user.roles[0].name === 'alumno' ? '/alumno-home' :
+      '/otra-ruta' // Puedes manejar otros roles o casos aquí
+    );
   }, [isAuthenticated, user, navigate]);
 
   return (
+  
     <div class="login">
       <div class="login_logo"></div>
       <div class="login_form_container">

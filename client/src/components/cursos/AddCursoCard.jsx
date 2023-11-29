@@ -1,10 +1,10 @@
 // import { useTasks } from "../../context/tasksContext";
 import { Button, ButtonNext, ButtonLink, Card } from "../ui";
-import { useAlumnos } from "../../context/alumContext";
+import { useAdmin } from "../../context/adminContext";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function CursoCard({ curso }) {
-  const { addUser } = useAlumnos();
+  const { addUser } = useAdmin();
 
   //para enviar la dataaa
   const onSubmit = async (data) => {

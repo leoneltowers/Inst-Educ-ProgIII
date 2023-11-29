@@ -17,7 +17,7 @@ function Header() {
 
   const menuItems = [
     { href: '/', title: 'Home' },
-    { href: 'Itba', title: 'Somos ITBA' },
+    { href: 'Itba', title: 'Somos UTN' },
     { href: 'OfertaAcademica', title: 'Oferta Academica' },
     { href: 'Becas', title: 'Becas' },
     { href: 'Login', title: 'Sign in' },
@@ -25,16 +25,16 @@ function Header() {
   ];
 
   const adminItems = [
-    { href: 'cursos', title: 'Administrar Cursos' },
-    { href: 'alumnos', title: 'Adiministrar Alumnos' },
+    // { href: 'cursos', title: 'Administrar Cursos' },
+    // { href: 'alumnos', title: 'Adiministrar Alumnos' },
     // { href: 'docente', title: 'Calificar' },
     // { href: 'perfil', title: 'Perfil' },
   ];
 
   const alumItems = [
     // { href: '/', title: 'Home' },
-    { href: 'allcursos', title: 'Inscribirse' },
-    { href: 'calificaciones', title: 'Mis Notas' },
+    // { href: 'allcursos', title: 'Inscribirse' },
+    // { href: 'calificaciones', title: 'Mis Notas' },
     // { href: 'Perfil', title: 'Perfil' },
   ]
 
@@ -82,8 +82,8 @@ function Header() {
               <li>
                 <div className="user_container">
                   <BiUserCircle />
-                  <span className="navbar_user">{user.firstName }</span>
-                  <span className="navbar_user">{user.lastName}</span>                 
+                  <span className="navbar_user">{user.firstName}</span>
+                  <span className="navbar_user">{user.lastName}</span>
                 </div>
               </li>
             </>

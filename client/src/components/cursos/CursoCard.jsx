@@ -1,25 +1,26 @@
 // import { useTasks } from "../../context/tasksContext";
 import { Button, ButtonLink, Card } from "../ui";
-import { useAlumnos } from "../../context/alumContext";
+import { useAdmin } from "../../context/adminContext";
 import { useNavigate, useParams } from "react-router-dom";
 // const params = useParams(); 
 
 export function CursoCard({ curso }) {
   // const { deleteTask } = useTasks();
-  const { deleteCurso } = useAlumnos();
+  const { deleteCurso } = useAdmin();
 
  
   return (
     <Card>
       < div className="">
         <h1 className="text-2xl text-center font-bold">{curso.nombre}</h1>
-        <h2 className="text-center">{curso.comision}</h2>
-
+        <h2 className="text-center"> Comisión: {curso.comisión}</h2>
+        <h2 className="text-center">Año: {curso.año}</h2>
         {/* <Button onClick={() => addUser(curso._id)}>Asociar Curso</Button> */}
 
         <div className="flex gap-x-2 justify-center items-center my-4">
           <Button onClick={() => deleteCurso(curso._id)}>Delete</Button>
           <ButtonLink to={`/cursos/${curso._id}`}>Editar</ButtonLink>
+          <ButtonLink to={`/cursosAlum/${curso._id}`}>Ver</ButtonLink>
         </div>
 
         {/* <Button onSubmit={handleSubmit(onSubmit)}>Asociar Curso</Button> */}
