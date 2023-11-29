@@ -6,6 +6,7 @@ import { CursoFormPage } from "../adminAlum/CursoFormPage";
 import ListAlumnos from "../adminAlum/ListAlumnos";
 import { AlumnoPage } from "../adminAlum/AumnoPage";
 import { ProfesorPage } from "../adminAlum/ProfesorPage";
+import { AlumnoFormPage } from "../adminAlum/AumnoFormPage";
 import './../../styles/index.css';
 
 function Admin() {
@@ -23,6 +24,7 @@ function Admin() {
           <Route path="/cursos/:id" element={<CursoFormPage />} />
 
           <Route path="/alumnos" element={<AlumnoPage />} />
+          <Route path="/alumnos/:id" element={<AlumnoFormPage />} />
           <Route path="/profesores" element={<ProfesorPage />} />
           <Route path="/cursosAlum/:id" element={<ListAlumnos />} />
 

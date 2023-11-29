@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 export function AlumnoFormPage() {
 
-  const { getAlumno, updateAlumno }= useAdmin();
+  const { getAlumno, updateAlumno } = useAdmin();
   const navigate = useNavigate();
   const params = useParams();
   const {
@@ -35,52 +35,55 @@ export function AlumnoFormPage() {
         const alumno = await getAlumno(params.id);
         setValue("firstName", alumno.firstName);
         setValue("lastName", alumno.lastName);
-        setValue("phone",alumno.phone);
+        setValue("phone", alumno.phone);
       }
     };
     loadAlumno();
   }, []);
 
   return (
-    <div className="card-container">
-      <Card>
-        <form onSubmit={handleSubmit(onSubmit)}>
 
-          <Input
-            type="text"
-            name="firstName"
-            placeholder="Nombre"
-            {...register("firstName")}
-            autoFocus
-          />
-          {errors.title && (
-            <p className="text-red-500 text-xs italic">Please enter a title.</p>
-          )}
+    <div className="flex items-center justify-center m-16">
+      <div className="card-container">
+        <Card>
+          <form onSubmit={handleSubmit(onSubmit)}>
 
-          <Input
-            type="text"
-            name="lastName"
-            placeholder="Apellido"
-            {...register("lastName")}
-            autoFocus
-          />
-          {errors.title && (
-            <p className="text-red-500 text-xs italic">Please enter a title.</p>
-          )}
+            <Input
+              type="text"
+              name="firstName"
+              placeholder="Nombre"
+              {...register("firstName")}
+              autoFocus
+            />
+            {errors.title && (
+              <p className="text-red-500 text-xs italic">Please enter a title.</p>
+            )}
 
-          <Input
-            type="text"
-            name="phone"
-            placeholder="Telefono"
-            {...register("phone")}
-            autoFocus
-          />
-          {errors.title && (
-            <p className="text-red-500 text-xs italic">Please enter a title.</p>
-          )}
-          <Button>Save</Button>
-        </form>
-      </Card>
+            <Input
+              type="text"
+              name="lastName"
+              placeholder="Apellido"
+              {...register("lastName")}
+              autoFocus
+            />
+            {errors.title && (
+              <p className="text-red-500 text-xs italic">Please enter a title.</p>
+            )}
+
+            <Input
+              type="text"
+              name="phone"
+              placeholder="Telefono"
+              {...register("phone")}
+              autoFocus
+            />
+            {errors.title && (
+              <p className="text-red-500 text-xs italic">Please enter a title.</p>
+            )}
+            <Button>Save</Button>
+          </form>
+        </Card>
+      </div>
     </div>
   );
 }
