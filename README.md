@@ -1,17 +1,20 @@
 # Institucion educativa
-##PROYECTO FINAL PROGRAMACION III -  2023
+# PROYECTO FINAL PROGRAMACION III -  2023
 
 Institución Educativa
 
-# Descripción general
 
-El sistema a implementar debe contemplar las funcionalidades:
+# Características
 
-● Administración de alumnos: se registran los alumnos que asisten a la entidad y se asocian a un curso determinado (comisión).
+1. Opciones de Administrador, Profesor y Estudiante Totalmente Funcionales
+2. El administrador puede actualizar los detalles del perfil, la contraseña en la sección de perfil, de los profesores y alumonos.
+3. El administrador puede agregar eliminar u obtener cualquier curso, estudiante o profesor
+4. El administrador puede editar cualquier curso y asociarle materias
+5. El profesor puede actualizar los detalles del perfil, la contraseña en la sección de perfil
+6. El profesor puede calificar a los alumnos asociados.
+7. El estudiante puede actualizar los detalles del perfil, la contraseña en la sección de perfil
+8. El estudiante puede verificar su calificacion y generar su boletin
 
-● Administración de cursos: las materias ya ingresadas en el sistema, deberán estar asociadas a un año y a un curso determinado (o un curso deberá tener materias asignadas)
-
-● Generación de “boletín” de calificaciones asociado a cada alumno
 
 
 # To run project local Server
