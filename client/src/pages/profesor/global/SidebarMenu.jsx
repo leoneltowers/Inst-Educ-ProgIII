@@ -82,20 +82,20 @@ const SidebarMenu = () => {
                     alt="profile-user"
                     width="100px"
                     height="100px"
-                    src={`../../alex.jpg`}
+                    src={`../../profesor.png`}
                     style={{ cursor: "pointer", borderRadius: "50%" }}
                   />
                 </Box>
 
                 <Box textAlign="center">
-                  <Typography
+                  {/* <Typography
                     variant="h2"
                     fontWeight="bold"
                     color={colors.grey[100]}
                     sx={{ m: "10px 0 0 0" }}
                   >
                     Leonel
-                  </Typography>
+                  </Typography> */}
                   <Typography variant="h5" color={colors.greenAccent[500]}>
                     Main Profesor
                   </Typography>

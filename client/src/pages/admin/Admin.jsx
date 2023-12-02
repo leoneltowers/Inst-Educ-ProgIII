@@ -29,15 +29,6 @@ function Admin() {
           <Route path="/cursosAlum/:id" element={<ListAlumnos />} />
 
 
-
-
-
-                //add
-          {/* <Route path="/form" element={<InputForm />} />
-                <Route path="/addCurso" element={<AddCurso/>} />
-                <Route path="/addProfesor" element={<AddProfesor/>} /> 
-           <Route path="/team" element={<Team />} /> */}
-
         </Routes>
       </section>
     </main>

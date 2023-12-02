@@ -19,21 +19,21 @@ import { createMateria } from "../controllers/curso.controllers.js";
 const router = Router();
 
 router.get("/cursos", auth, getCursos);
-router.post("/cursos",  createCurso);//auth,
-router.get("/cursos/:id",  getCurso);//auth,
+router.post("/cursos", auth, createCurso);
+router.get("/cursos/:id", auth, getCurso);
 router.put("/cursos/:id", auth, updateCurso);
 router.delete("/cursos/:id", auth, deleteCurso);
 
-router.get("/cursosAlum/:id",  getCurso); //auth,auth,
+router.get("/cursosAlum/:id", auth, getCurso); 
 
 router.post("/addUser/:id", auth, addUserCursos);
-router.post("/materias", createMateria);
+router.post("/materias", auth, createMateria);
 
 
 router.get("/calificaciones", auth, getCalificaciones);
-router.get("/calificar/:id", getCalificacion );
-router.put("/calificar/:id", updateCalificacion);
+router.get("/calificar/:id", auth, getCalificacion );
+router.put("/calificar/:id", auth, updateCalificacion);
 
-router.post("/addCalif", createCalif);
+router.post("/addCalif", auth, createCalif);
 
 export default router;

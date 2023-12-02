@@ -24,6 +24,7 @@ const server = http.createServer(app)
 const db_url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/'
 const db_name = process.env.MONGO_DB || 'Institucion-educativa'
 
+
 // MongoDB database initialization
 initDatabase()
   .then(() => console.log('Database connection established successfully!'))

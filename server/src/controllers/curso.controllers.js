@@ -155,16 +155,6 @@ export const createMateria = async (req, res) => {
   }
 };
 
-//Calificaciones
-// export const getCalificaciones = async (req, res) => {
-//   try {
-//     const calificaciones = await Calificacion.find({alumno: req.user.id}).populate('materia');
-//     res.json(calificaciones);
-//   } catch (error) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
-
 export const getCalificaciones = async (req, res) => {
   try {
     if (req.user.roles) {

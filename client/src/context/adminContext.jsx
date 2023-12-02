@@ -95,16 +95,7 @@ export function AdminProvider({ children }) {
     }
   };
 
-  // const getCursoAlum = async (id) => {
-  //   try {
-  //   //   const res = await getCursoAlumRequest(id);
-  //   //    setCursosAlum(res.data); 
-  //   //  console.log("javii", res);
-  //   //  return res.data;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
 
   const updateCurso = async (id, curso) => {
     try {
@@ -179,8 +170,6 @@ export function AdminProvider({ children }) {
         getCursos,
         createCurso,
         getCurso,
-        // getCursoAlum,
-        
         updateCurso,
         deleteCurso,
         getAlumno,
