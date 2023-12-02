@@ -15,6 +15,18 @@ Institución Educativa
 7. El estudiante puede actualizar los detalles del perfil, la contraseña en la sección de perfil
 8. El estudiante puede verificar su calificacion y generar su boletin
 
+# Login
+ADMIN:
+EMAIL: admin@gmail.com
+PASS:123456
+
+PROFESOR:
+EMAIL: profesor@gmail.com
+PASS:123456
+
+ALUMNO:
+EMAIL: alumno@gmail.com
+PASS:123456
 
 
 # To run project local Server
@@ -33,10 +45,13 @@ npm run dev
 # To run migrations local
 
 ```
-npm run migrate-dev
+
+migrate-mongo init
+migrate-mongo up  
+
 ```
 
-.env (example)
+.env 
 
 ```
 
