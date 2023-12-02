@@ -7,7 +7,7 @@ Institución Educativa
 # Características
 
 1. Opciones de Administrador, Profesor y Estudiante Totalmente Funcionales
-2. El administrador puede actualizar los detalles del perfil, la contraseña en la sección de perfil, de los profesores y alumonos.
+2. El administrador puede actualizar los detalles del perfil, la contraseña en la sección de perfil, de los profesores y alumnos.
 3. El administrador puede agregar eliminar u obtener cualquier curso, estudiante o profesor
 4. El administrador puede editar cualquier curso y asociarle materias
 5. El profesor puede actualizar los detalles del perfil, la contraseña en la sección de perfil
